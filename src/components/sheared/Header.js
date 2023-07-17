@@ -2,7 +2,7 @@ import LoginBtn from '@/components/Login/LoginBtn'
 import Link from 'next/link'
 import { AiOutlineShoppingCart } from 'react-icons/ai'
 import { totalQuantity } from '@/redux/slice/cartSlice'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 
 const navItems = [
     {
