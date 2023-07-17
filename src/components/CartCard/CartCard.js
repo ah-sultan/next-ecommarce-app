@@ -38,7 +38,7 @@ function CartCard(props) {
         </div>
         <div class="flex items-center space-x-4">
           <p class="text-sm text-gray-100">
-            <Currency amount={price} currency="USD" />
+            <Currency amount={price * quantity} currency="USD" />
           </p>
           <button onClick={removeItemFormCart}>
             <AiFillDelete />

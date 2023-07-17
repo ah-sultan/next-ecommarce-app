@@ -1,10 +1,16 @@
 import CartCard from "@/components/CartCard/CartCard"
-import { selectedCartItems } from "@/redux/slice/cartSlice"
-import { useDispatch, useSelector } from "react-redux"
+import Currency from "@/components/Currency/Currency"
+import { selectedCartItems, totalItemPrice } from "@/redux/slice/cartSlice"
+import { useSelector } from "react-redux"
 
 
 function cart() {
     const cartItems = useSelector(selectedCartItems)
+    const totalPrice = useSelector(totalItemPrice)
+
+    const subTotal = totalPrice
+    const shippingCost = 12
+    const total = totalPrice + shippingCost
 
     return (
         <>
@@ -27,17 +33,23 @@ function cart() {
                         <div className="mt-6 h-full rounded-lg border bg-gray-800 p-6 shadow-md md:mt-0 md:w-1/3">
                             <div className="mb-2 flex justify-between">
                                 <p className="text-gray-300">Subtotal</p>
-                                <p className="text-gray-300">$129.99</p>
+                                <p className="text-gray-300">
+                                    <Currency amount={subTotal} currency="USD"/>
+                                </p>
                             </div>
                             <div className="flex justify-between">
                                 <p className="text-gray-300">Shipping</p>
-                                <p className="text-gray-300">$4.99</p>
+                                <p className="text-gray-300">
+                                <Currency amount={shippingCost} currency="USD"/>
+                                </p>
                             </div>
                             <hr className="my-4 border-gray-700" />
                             <div className="flex justify-between">
                                 <p className="text-lg font-bold text-gray-100">Total</p>
                                 <div className="">
-                                    <p className="mb-1 text-lg font-bold text-gray-100">$134.98 USD</p>
+                                    <p className="mb-1 text-lg font-bold text-gray-100">
+                                    <Currency amount={total} currency="USD"/>
+                                    </p>
                                     <p className="text-sm text-gray-300">including VAT</p>
                                 </div>
                             </div>
