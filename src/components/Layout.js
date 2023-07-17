@@ -1,14 +1,14 @@
-import Footer from '@/pages/sheared/Footer'
-import Header from '@/pages/sheared/Header'
+import Footer from '@/components/sheared/Footer'
+import Header from '@/components/sheared/Header'
 
-function Layout({children}) {
+function Layout({ children }) {
   return (
     <>
-    <Header/>
-    <main>
+      <Header />
+      <main>
         {children}
-    </main>
-    <Footer/>
+      </main>
+      <Footer />
     </>
   )
 }
