@@ -4,7 +4,7 @@ import { selectedCartItems, totalItemPrice } from "@/redux/slice/cartSlice"
 import { useSelector } from "react-redux"
 
 
-function cart() {
+function Cart() {
     const cartItems = useSelector(selectedCartItems)
     const totalPrice = useSelector(totalItemPrice)
 
@@ -34,13 +34,13 @@ function cart() {
                             <div className="mb-2 flex justify-between">
                                 <p className="text-gray-300">Subtotal</p>
                                 <p className="text-gray-300">
-                                    <Currency amount={subTotal} currency="USD"/>
+                                    <Currency amount={subTotal} currency="USD" />
                                 </p>
                             </div>
                             <div className="flex justify-between">
                                 <p className="text-gray-300">Shipping</p>
                                 <p className="text-gray-300">
-                                <Currency amount={shippingCost} currency="USD"/>
+                                    <Currency amount={shippingCost} currency="USD" />
                                 </p>
                             </div>
                             <hr className="my-4 border-gray-700" />
@@ -48,7 +48,7 @@ function cart() {
                                 <p className="text-lg font-bold text-gray-100">Total</p>
                                 <div className="">
                                     <p className="mb-1 text-lg font-bold text-gray-100">
-                                    <Currency amount={total} currency="USD"/>
+                                        <Currency amount={total} currency="USD" />
                                     </p>
                                     <p className="text-sm text-gray-300">including VAT</p>
                                 </div>

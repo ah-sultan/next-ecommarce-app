@@ -1,7 +1,8 @@
 import LoginBtn from '@/components/Login/LoginBtn'
 import Link from 'next/link'
-import { AiOutlineShoppingCart } from 'react-icons/ai'
+import { AiOutlineShoppingCart, AiOutlineHeart } from 'react-icons/ai'
 import { totalQuantity } from '@/redux/slice/cartSlice'
+import { totalWishlistItems } from '@/redux/slice/wishlistSlice'
 import { useSelector } from 'react-redux'
 
 const navItems = [
@@ -31,6 +32,7 @@ const navItems = [
 
 function Header() {
     const totalCartItems = useSelector(totalQuantity)
+    const totalWishlist = useSelector(totalWishlistItems)
     return (
         <>
             <header className="sticky top-0 z-10">
@@ -45,6 +47,12 @@ function Header() {
                             <Link href='/cart' className="relative text-lg">
                                 <AiOutlineShoppingCart className='text-[24px]' />
                                 <span className='text-xs p-1 rounded-full leading-none bg-rose-700 text-white absolute -right-2 -top-2'>{totalCartItems}</span>
+                            </Link>
+                            <Link href='/wishlist' className="relative text-lg ml-2">
+                                <AiOutlineHeart className='text-[24px]' />
+                                {
+                                    <span className={`text-xs p-1 rounded-full leading-none bg-pink-300 text-white absolute -right-2 -top-2 ${totalWishlist > 0 ? 'block' : 'hidden'}`}>{totalWishlist}</span>
+                                }
                             </Link>
                             <div className='ml-4'>
                                 <LoginBtn />
