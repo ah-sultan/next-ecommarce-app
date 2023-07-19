@@ -4,6 +4,7 @@ import { AiOutlineShoppingCart, AiOutlineHeart } from 'react-icons/ai'
 import { totalQuantity } from '@/redux/slice/cartSlice'
 import { totalWishlistItems } from '@/redux/slice/wishlistSlice'
 import { useSelector } from 'react-redux'
+import Search from './Search'
 
 const navItems = [
     {
@@ -42,6 +43,9 @@ function Header() {
                             <img src="https://flowbite.com/docs/images/logo.svg" className="mr-3 h-6 sm:h-9" alt="Flowbite Logo" />
                             <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
                         </Link>
+                        <div>
+                            <Search/>
+                        </div>
                         <div className="flex items-center lg:order-2">
 
                             <Link href='/cart' className="relative text-lg">

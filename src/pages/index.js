@@ -1,7 +1,16 @@
 import AllProducts from "@/components/AllProducts/AllProducts"
 import Hero from "@/components/Hero/Hero"
+import { useEffect } from "react"
+import { useDispatch } from "react-redux"
+import { storeAllItems } from "@/redux/slice/filterSlice"
 
 function Home({products}) {
+const dispatch = useDispatch()
+
+  useEffect(() => {
+      dispatch(storeAllItems(products))  
+  })
+
   return (
     <>
     <Hero/>
