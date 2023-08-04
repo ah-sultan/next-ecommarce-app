@@ -15,8 +15,8 @@ const navItems = [
 
     {
         id: 0,
-        title: 'About',
-        url: '/'
+        title: 'Shop',
+        url: '/shop'
     },
 
     {
@@ -44,7 +44,7 @@ function Header() {
                             <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
                         </Link>
                         <div>
-                            <Search/>
+                            <Search />
                         </div>
                         <div className="flex items-center lg:order-2">
 

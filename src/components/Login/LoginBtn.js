@@ -13,13 +13,13 @@ function LoginBtn() {
             <>
                 <div className="relative">
                     <button onClick={() => setShowProfile(!showProfile)} className="w-8 h-8 rounded-full border overflow-hidden border-blue-900">
-                        <Image src={session.user.image} alt={session.user.name} />
+                        <Image src={session.user.image} alt={session.user.name} width={80} height={80} />
                     </button>
 
                     <div className="absolute top-full right-0 p-2 rounded-md bg-slate-900 shadow" style={{ display: showProfile ? 'block' : 'none' }}>
                         <div className="flex items-center border-b pb-2">
                             <div className="w-12 h-12 rounded-full border overflow-hidden border-blue-900 mr-2">
-                                <Image src={session.user.image} alt={session.user.name} />
+                                <Image src={session.user.image} alt={session.user.name} width={80} height={80} />
                             </div>
                             <div>
                                 <h6 className="leading-none">{session.user.name}</h6>
