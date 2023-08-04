@@ -1,6 +1,9 @@
-import React from 'react'
+import { useDispatch } from "react-redux"
+import { shopFilterHandler } from "@/redux/slice/filterSlice"
 
-function ShopFilterCard(props) {
+function ShopCategoryFilter(props) {
+    const dispatch = useDispatch()
+
     return (
         <>
 
@@ -9,10 +12,12 @@ function ShopFilterCard(props) {
 
                 <ul className="mt-7">
                     {
-                        props?.data?.map((category, index) =>
+                        props?.data?.map((itemCategory, index) =>
 
-                            <li className="mt-2" key={index}>
-                                {category}
+                            <li className="mt-2 cursor-pointer" key={index} onClick={() => dispatch(shopFilterHandler({
+                                category: itemCategory,
+                            }))}>
+                                {itemCategory}
                             </li>
 
                         )
@@ -23,4 +28,4 @@ function ShopFilterCard(props) {
     )
 }
 
-export default ShopFilterCard
+export default ShopCategoryFilter

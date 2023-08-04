@@ -1,27 +1,31 @@
 import Breadcrumb from "@/components/Breadcrumb/Breadcrumb"
 import ProductCard from "@/components/ProductCard/ProductCard"
 import { useDispatch, useSelector } from "react-redux"
-import { storeAllItems, storedAllItems } from "@/redux/slice/filterSlice"
+import { shopFilteredValue, storeAllItems, storedAllItems } from "@/redux/slice/filterSlice"
 import { useEffect, useState } from "react"
-import ShopFilterCard from "@/components/ShopFilterCard/ShopFilterCard"
 import ShopPriceFilter from "@/components/ShopFilterCard/ShopPriceFilter"
+import ShopCategoryFilter from "@/components/ShopFilterCard/ShopFilterCard"
 
 function Shop({ products }) {
 
     const [cetagory, setCetagory] = useState([])
-
+    const [filteredItems, setFilteredItems] = useState([])
 
     const dispatch = useDispatch()
-    const getStoredItems = useSelector(storedAllItems)
+    const getStoredAllItems = useSelector(storedAllItems)
+    const filteredValue = useSelector(shopFilteredValue)
+
 
     useEffect(() => {
         dispatch(storeAllItems(products))
 
-        const getUniqueCetagory = [...new Set(getStoredItems.map((items) => items.category))];
-
+        const getUniqueCetagory = [...new Set(getStoredAllItems.map((items) => items.category))];
         setCetagory(getUniqueCetagory)
 
-    }, [getStoredItems, cetagory])
+        const getFilterItems = getStoredAllItems.filter((items) => items.category === filteredValue.category || getStoredAllItems)
+        setFilteredItems(getFilterItems)
+
+    }, [filteredItems, cetagory, getStoredAllItems])
 
     return (
         <>
@@ -30,14 +34,14 @@ function Shop({ products }) {
                 <div className="container">
                     <div className="flex">
                         <div className="w-3/12">
-                            <ShopFilterCard title="Serched By Category" data={cetagory} />
+                            <ShopCategoryFilter title="Serched By Category" data={cetagory} />
                             <ShopPriceFilter />
 
                         </div>
                         <div className="w-9/12 pl-10">
                             <div className="grid grid-cols-3 gap-x-6 gap-y-10">
                                 {
-                                    products?.map((product, index) => {
+                                    filteredItems?.map((product, index) => {
                                         const { id, title, price, description, category, image, rating } = product
                                         return (
                                             <ProductCard key={index} id={id} title={title} price={price} description={description} category={category} image={image} rating={rating} />

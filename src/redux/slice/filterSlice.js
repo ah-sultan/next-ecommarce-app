@@ -5,7 +5,11 @@ const filterSlice = createSlice({
     initialState: {
         allItems: [],
         searchedItems: [],
-        shopFilteredItems: []
+        shopFilterValue: {
+            category: null,
+            price: null,
+
+        }
 
     },
 
@@ -18,7 +22,10 @@ const filterSlice = createSlice({
             state.searchedItems = action.payload
         },
 
-        filterBy
+        shopFilterHandler: (state, action) => {
+
+            state.shopFilterValue.category = action.payload.category
+        }
 
 
 
@@ -26,8 +33,9 @@ const filterSlice = createSlice({
     }
 })
 
-export const { storeAllItems, addToSearchedItems } = filterSlice.actions
+export const { storeAllItems, addToSearchedItems, shopFilterHandler } = filterSlice.actions
 
 export const storedAllItems = (state) => state.filter.allItems
+export const shopFilteredValue = (state) => state.filter.shopFilterValue
 
 export default filterSlice.reducer
