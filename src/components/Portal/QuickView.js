@@ -39,7 +39,7 @@ function QuickView() {
                     </button>
                     <div className="flex flex-wrap">
                         <div className="w-full lg:w-1/2">
-                            <Image src={data.image} alt={data.title} width={400} height={600} />
+                            <Image src={data.image} alt={data.title || "product"} width={400} height={600} />
                         </div>
                         <div className="w-full lg:w-1/2 p-8">
 

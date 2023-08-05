@@ -24,7 +24,10 @@ const filterSlice = createSlice({
 
         shopFilterHandler: (state, action) => {
 
-            state.shopFilterValue.category = action.payload.category
+            // state.shopFilterValue.category = action.payload.category
+            // state.shopFilterValue.price = action.payload.price
+
+            state.shopFilterValue = { ...state.shopFilterValue, ...action.payload }
         }
 
 
